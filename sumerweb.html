@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumer Nutrition | Ancient Power</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Harmattan:wght@400;500;600;700&family=Lalezar&family=Noto+Sans+Arabic:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+       
+        /* --- RESET & VARIABLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        
+        
+        :root {
+            /* NEW COLOR SCHEME */
+            --bg-main: #EEECE8;       /* Light Stone Background */
+            --bg-card: #F7F5F2;       /* Slightly lighter for cards */
+            --accent: #52361D;        /* Dark Brown (Text, Borders, Logos) */
+            --secondary: #28292B;     /* Dark Grey (Footer, Secondary elements) */
+            
+            --nav-height: 80px;
+            --font-head: 'Cinzel', 'Baloo Bhaijaan 2', serif; 
+            --font-body: 'Montserrat', 'Harmattan', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-image: url("./images/hero-bg-light.jpg");
+            background-attachment: fixed;
+            background-size: 30em;
+            background-repeat: repeat;
+            color: var(--secondary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            padding-top: var(--nav-height);
+            direction: rtl;
+            unicode-bidi: plaintext;
+        }
+
+        /* --- TYPOGRAPHY & UTILS --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .section-desc {
+            text-align: center;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 2px solid var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-main);
+            font-family: var(--font-head);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            width: 100%;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(82, 54, 29, 0.1);
+        }
+
+        .btn-details {
+            display: block;
+            margin-top: 10px;
+            color: var(--accent);
+            text-decoration: underline;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+            background: none;
+            border: none;
+            width: 100%;
+        }
+
+        /* --- IMAGES --- */
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .icon-img {
+            height: 3em; 
+            object-fit: contain;
+            text-align: center;
+
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(238, 236, 232, 0.95);
+            border-bottom: 2px solid var(--accent);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover { opacity: 0.7; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--accent);
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--bg-main);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+                border-left: 2px solid var(--accent);
+                z-index: 1001;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { right: 0; }
+
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(40, 41, 43, 0.6);
+            z-index: 1000;
+            display: none;
+        }
+        .overlay.active { display: block; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-wrapper {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .hero-bg-wrapper img {
+            width: 100%; height: 100%; object-fit: cover; 
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* --- BENEFITS --- */
+        .benefits {
+            background: transparent;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .benefit-item h4 { margin-bottom: 10px; font-size: 1.1rem; }
+        .benefit-item p { font-size: 0.9rem; color: #555; }
+        .benefit-icon-wrapper { 
+            display: block;
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+            width: 50%;
+            height: 50%;
+        }
+
+        /* --- FEATURED SECTION (Best Sellers) --- */
+        .featured {
+            padding: 80px 0;
+            background: transparent;
+        }
+
+        .featured-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        /* Product Card Styling */
+        .product-card {
+             background: #FFF;
+             border: 1px solid #E0E0E0;
+             transition: 0.3s;
+             position: relative;
+             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            overflow: visible;
+        }
+ 
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(82, 54, 29, 0.1);
+        }
+ 
+        .product-img-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: #F4F4F4; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+         
+         .product-img-container img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             display: block;
+         }
+
+         /* Flavor Icon Styling */
+         .flavor-icon {
+             position: absolute;
+             top: 10px;
+             left: 10px;
+             width: 35px;
+             height: 35px;
+             background: rgba(255, 255, 255, 0.95);
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+             z-index: 10;
+             overflow: hidden;
+         }
+
+         .flavor-icon img {
+             width: 100%;
+             height: 100%;
+             object-fit: contain;
+         }
+ 
+         .product-info { 
+             padding: 20px 15px;
+             text-align: center;
+             flex: 1 1 auto;
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+         }
+        
+        .product-title {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            margin-bottom: 3px;
+            color: var(--accent);
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .product-brand {
+            font-size: clamp(0.65rem, 2vw, 0.75rem);
+            color: #888;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+ 
+        .product-price {
+             color: #886A4A;
+             font-weight: 700;
+             font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+             margin-bottom: 10px;
+             display: block;
+             direction: rtl;
+             word-wrap: break-word;
+         }
+ 
+         .product-card[data-price] .product-price,
+         .panel-price,
+         #panelPrice {
+             direction: rtl;
+         }
+ 
+        .product-info .btn {
+            box-sizing: border-box;
+            padding: 10px 12px;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            width: 100%;
+            margin-top: 10px;
+            line-height: 1.2;
+            white-space: normal;
+        }
+        .product-info .btn[style] { width: 100%; }
+ 
+        .badge {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: var(--accent);
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+
+        /* --- SHOP / FILTER SECTION --- */
+        .shop-section {
+            padding: 80px 0;
+            background: transparent;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #CCC;
+            color: #777;
+            padding: 10px 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: var(--font-body);
+            transition: 0.3s;
+            font-weight: 600;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #FFF;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(140px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            padding-bottom: 10px;
+        }
+ 
+        @media (max-width: 420px) {
+            .shop-grid { 
+                gap: 15px;
+                grid-template-columns: repeat(2, minmax(120px, 1fr));
+            }
+            .product-card {
+                max-width: 100%;
+            }
+        }
+ 
+         .shop-item { display: block; }
+         .shop-item.hide { display: none; }
+ 
+        /* --- FOOTER --- */
+        footer {
+            background: var(--secondary);
+            color: #CCC;
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo h3 { color: #FFF; margin-top: 10px; }
+
+        .footer-links { margin: 25px 0; }
+        .footer-links a { color: #999; margin: 0 15px; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: #FFF; }
+        
+        .copyright { color: #555; font-size: 0.8rem; border-top: 1px solid #333; padding-top: 20px; margin-top: 40px;}
+
+        /* --- SLIDE-OUT DETAILS PANEL --- */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 400px;
+            height: 100vh;
+            background: #FFF;
+            z-index: 2000;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 40px;
+            overflow-y: auto;
+            border-left: 5px solid var(--accent);
+            unicode-bidi: plaintext;
+        }
+
+        .side-panel.open { right: 0; }
+        
+        .panel-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--accent);
+        }
+
+        .panel-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            unicode-bidi: plaintext;
+        }
+
+        .panel-content .panel-price {
+            color: #886A4A;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .panel-content p {
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 0.95rem;
+            direction: rtl;
+        }
+
+        .panel-content ul {
+            margin-right: 20px;
+            margin-bottom: 15px;
+            direction: rtl;
+        }
+
+        .panel-content li {
+            margin-bottom: 8px;
+            color: #444;
+            direction: rtl;
+        }
+
+        .panel-divider {
+            height: 1px;
+            background: #E0E0E0;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 500px) {
+            .side-panel { width: 85%; }
+        }
+
+        #hero > div > a {
+            font-size: 1.7rem;
+            padding: 2px 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="side-panel" id="detailsPanel">
+        <div class="panel-close" onclick="closePanel()">&times;</div>
+        <div class="panel-content" id="panelContent">
+            <h3 id="panelTitle">Product Name</h3>
+            <span class="panel-price" id="panelPrice">0 دينار</span>
+            <div class="panel-divider"></div>
+            <h4>المعلومات الغذائية</h4>
+
+            <div id="panelDesc">
+                <p><strong>حجم الحصة:</strong> 1 Scoop (30g)</p>
+                <p>لا توجد معلومات إضافية متاحة.</p>
+            </div>
+
+            <a class="btn btn-primary" href="https://www.instagram.com/sumernutrition/" target="_blank" rel="noopener noreferrer" style="width:100%; margin-top:20px; display:inline-block; text-align:center;">اشترِ الان من صفحتنا</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div style="width: 30px;">
+                    <img src="./icons/logo-icon.png" alt="Sumer Logo" class="icon-img"> 
+                </div>
+                SUMER NUTRITION
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="#shop">The Armory</a></li>
+                <li><a href="#benefits">Why Us</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <h1>قوة سومر.<br>من مكملات سومر.</h1>
+            <p>منذ 5000 سنة، تبقى حضارة سومر قوية. ومع كل جرعة، راح تجرب قوة سومر.</p>
+            <a href="#shop" class="btn btn-primary">منتجاتنا</a>
+        </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon-wrapper">
+                        <img src="./icons/muscle.png" alt="Strength Icon" class="icon-img">
+                    </div>
+                    <h4>قوة غير محدودة</h4>
+                    <p>تتذكر اقصى وزن رفعته؟ هسه اضربه x2</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon-wrapper">
+                        <img src="./icons/science.png" alt="Science Icon" class="icon-img">
+                    </div>
+                    <h4>أحدث الشركات</h4>
+                    <p>شركات مجربة شخصيا وعلى مستوى العراق.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon-wrapper">
+                        <img src="./icons/history.png" alt="History Icon" class="icon-img">
+                    </div>
+                    <h4>طابع سومري</h4>
+                    <p>مستوحاة من حضارة سومر القديمة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured" id="featured">
+        <div class="container">
+            <h2 class="section-title">تفضيلات سومر</h2>
+            <p class="section-desc">افضل 3 منتجات تقدمها سومر.</p>
+
+            <div class="featured-grid">
+                <!-- Protein ISO+ RealDeal -->
+                <div class="product-card" data-title="Protein ISO+ 500g" data-price="100,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 66</p><p><strong>حجم الحصة:</strong> (1 scoop) g 30</p><ul><li>طاقة: kJ 510 / kcal 122</li><li>دهون: g 1.06<ul><li>منها مشبعة: g 0.62</li><li>منها دهون متحولة: g 0</li></ul></li><li>كاربوهيدرات: g 1.68<ul><li>منها سكريات: g 1.02</li></ul></li><li>بروتين: g 26.4</li><li>ملح: g 0.15</li><li>كرياتين مونوهيدرات: g 3</li></ul>'>
+                    <span class="badge">Best Seller</span>
+                    <div class="product-img-container">
+                        <img src="./images/protein_iso_realdeal.jpg" alt="Protein ISO+ RealDeal">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Protein ISO+ 500g</h3>
+                        <p class="product-brand">RealDeal</p>
+                        <span class="product-price">100,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Pre-workout Ultimate Strawberry Lemonade -->
+                <div class="product-card" data-title="Pre-Workout Ultimate Strawberry Lemonade" data-price="40,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 40</p><p><strong>حجم الحصة:</strong> (1 scoop) g 8</p><ul><li>طاقة: kJ 4.2 / kcal 1</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 0.29<ul><li>منها سكريات: g 0</li></ul></li><li>بروتين: g 0</li><li>ملح: g 0.12</li><li>نياسين: mg 30</li><li>فيتامين B12: µg 100</li><li>كرياتين مونوهيدرات: g 2</li><li>بيتا ألانين: g 1.5</li><li>سيترولين مالات (2:1): g 1</li><li>أرجينين ألفا كيتوجلوتارات (AAKG): mg 500</li><li>BCAA 2:1:1: mg 500<ul><li>ليوسين: mg 250</li><li>إيزوليوسين: mg 125</li><li>فالين: mg 125</li></ul></li><li>تورين: mg 500</li><li>كافيين لامائي: mg 250</li><li>كولين بيتارترات: mg 250</li></ul>'>
+                    <span class="badge">Top Rated</span>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/strawberry.png" alt="Strawberry">
+                        </div>
+                        <img src="./images/prework_strawlemon_bodyfuel.jpg" alt="Pre-Workout Strawberry Lemonade">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pre-Workout Ultimate<br>Strawberry Lemonade</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Creatine Monohydrate Strawberry RealDeal -->
+                <div class="product-card" data-title="Creatine Monohydrate Strawberry" data-price="50,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 50</p><p><strong>حجم الحصة:</strong> (1 scoop) g 6</p><ul><li>كرياتين مونوهيدرات: mg 4050<ul><li>منها كرياتين: mg 3564</li></ul></li><li>تورين: mg 450</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/strawberry.png" alt="Strawberry">
+                        </div>
+                        <img src="./images/creatine_strawberry_realdeal.jpg" alt="Creatine Strawberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Creatine Monohydrate<br>Strawberry</h3>
+                        <p class="product-brand">RealDeal</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shop-section" id="shop">
+        <div class="container">
+            <h2 class="section-title">مستودع القوة</h2>
+            <p class="section-desc">اختر منتجاتك المفضلة من القائمة ادناه.</p>
+
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterSelection('all')">الكل</button>
+                <button class="filter-btn" onclick="filterSelection('protein')">بروتين</button>
+                <button class="filter-btn" onclick="filterSelection('creatine')">كرياتين</button>
+                <button class="filter-btn" onclick="filterSelection('vitamins')">فيتامينات</button>
+                <button class="filter-btn" onclick="filterSelection('preworkout')">بري ووركاوت</button>
+            </div>
+
+            <div class="shop-grid">
+                
+                <!-- Prime Whey Strawberry WeSupps -->
+                <div class="product-card shop-item protein" data-title="Prime Whey 2KG Strawberry" data-price="100,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 66</p><p><strong>حجم الحصة:</strong> (30g) Scoop</p><ul><li>بروتين: g 22.21</li><li>طاقة: kJ 469 / kcal 112</li><li>دهون: g 1.72<ul><li>منها مشبعة: g 1.01</li></ul></li><li>كاربوهيدرات: g 1.93<ul><li>منها سكريات: g 1.84</li></ul></li><li>ملح: g 0.21</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/strawberry.png" alt="Strawberry">
+                        </div>
+                        <img src="./images/whey_strawberry_wesupps.jpg" alt="Prime Whey Strawberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Prime Whey 2KG<br>Strawberry</h3>
+                        <p class="product-brand">WeSupps</p>
+                        <span class="product-price">100,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Prime Whey Banana WeSupps -->
+                <div class="product-card shop-item protein" data-title="Prime Whey 2KG Banana" data-price="100,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 66</p><p><strong>حجم الحصة:</strong> (30g) Scoop</p><ul><li>بروتين: g 22.21</li><li>طاقة: kJ 469 / kcal 112</li><li>دهون: g 1.72<ul><li>منها مشبعة: g 1.01</li></ul></li><li>كاربوهيدرات: g 1.93<ul><li>منها سكريات: g 1.84</li></ul></li><li>ملح: g 0.21</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/banana.png" alt="Banana">
+                        </div>
+                        <img src="./images/whey_banana_wesupps.jpg" alt="Prime Whey Banana">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Prime Whey 2KG<br>Banana</h3>
+                        <p class="product-brand">WeSupps</p>
+                        <span class="product-price">100,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Protein ISO+ RealDeal -->
+                <div class="product-card shop-item protein" data-title="Protein ISO+ 500g" data-price="100,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 66</p><p><strong>حجم الحصة:</strong> (1 scoop) g 30</p><ul><li>طاقة: kJ 510 / kcal 122</li><li>دهون: g 1.06<ul><li>منها مشبعة: g 0.62</li><li>منها دهون متحولة: g 0</li></ul></li><li>كاربوهيدرات: g 1.68<ul><li>منها سكريات: g 1.02</li></ul></li><li>بروتين: g 26.4</li><li>ملح: g 0.15</li><li>كرياتين مونوهيدرات: g 3</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/chocolate.png" alt="Berry Blast">
+                        </div>
+                        <img src="./images/protein_iso_realdeal.jpg" alt="Protein ISO+ RealDeal">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Protein ISO+ 500g</h3>
+                        <p class="product-brand">RealDeal</p>
+                        <span class="product-price">100,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Protein Clear (Beef) Blue Raspberry BodyFuel -->
+                <div class="product-card shop-item protein" data-title="Protein Clear (Beef) Blue Raspberry" data-price="90,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 20</p><p><strong>حجم الحصة:</strong> (1 scoop) g 25</p><ul><li>طاقة: kJ 359 / kcal 88</li><li>دهون: g 0.1<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 2.5<ul><li>منها سكريات: g 0.3</li></ul></li><li>بروتين: g 20</li><li>ملح: g 0.08</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/blueraspberry.png" alt="Blue Raspberry">
+                        </div>
+                        <img src="./images/protein_blueraspberry_bodyfuel.jpg" alt="Protein Clear Blue Raspberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Protein Clear<br>(Beef) Blue Raspberry</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">90,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Protein Clear (Beef) Berry Blast BodyFuel -->
+                <div class="product-card shop-item protein" data-title="Protein Clear (Beef) Berry Blast" data-price="90,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 20</p><p><strong>حجم الحصة:</strong> (1 scoop) g 25</p><ul><li>طاقة: kJ 359 / kcal 88</li><li>دهون: g 0.1<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 2.5<ul><li>منها سكريات: g 0.3</li></ul></li><li>بروتين: g 20</li><li>ملح: g 0.08</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/berry.png" alt="Berry Blast">
+                        </div>
+                        <img src="./images/protein_berryblast_bodyfuel.jpg" alt="Protein Clear Berry Blast">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Protein Clear<br>(Beef) Berry Blast</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">90,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Protein Clear (Beef) Citrus Burst BodyFuel -->
+                <div class="product-card shop-item protein" data-title="Protein Clear (Beef) Citrus Burst" data-price="90,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 20</p><p><strong>حجم الحصة:</strong> (1 scoop) g 25</p><ul><li>طاقة: kJ 359 / kcal 88</li><li>دهون: g 0.1<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 2.5<ul><li>منها سكريات: g 0.3</li></ul></li><li>بروتين: g 20</li><li>ملح: g 0.08</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/lemon.png" alt="Citrus Burst">
+                        </div>
+                        <img src="./images/protein_citrusburst_bodyfuel.jpg" alt="Protein Clear Citrus Burst">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Protein Clear<br>(Beef) Citrus Burst</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">90,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Creatine Monohydrate Unflavored WeSupps -->
+                <div class="product-card shop-item creatine" data-title="Creatine Monohydrate Unflavored" data-price="50,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 66</p><p><strong>حجم الحصة:</strong> (5000mg) Scoop</p><ul><li>كرياتين مونوهيدرات: mg 5000<ul><li>منها كرياتين: mg 4388</li></ul></li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/creatine_unflavored_wesupps.jpg" alt="Creatine Unflavored">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Creatine Monohydrate<br>Unflavored</h3>
+                        <p class="product-brand">WeSupps</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Creatine Monohydrate Strawberry RealDeal -->
+                <div class="product-card shop-item creatine" data-title="Creatine Monohydrate Strawberry" data-price="50,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 50</p><p><strong>حجم الحصة:</strong> (1 scoop) g 6</p><ul><li>كرياتين مونوهيدرات: mg 4050<ul><li>منها كرياتين: mg 3564</li></ul></li><li>تورين: mg 450</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/strawberry.png" alt="Strawberry">
+                        </div>
+                        <img src="./images/creatine_strawberry_realdeal.jpg" alt="Creatine Strawberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Creatine Monohydrate<br>Strawberry</h3>
+                        <p class="product-brand">RealDeal</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Creatine Monohydrate Lemon RealDeal -->
+                <div class="product-card shop-item creatine" data-title="Creatine Monohydrate Lemon" data-price="50,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 50</p><p><strong>حجم الحصة:</strong> (1 scoop) g 6</p><ul><li>كرياتين مونوهيدرات: mg 4050<ul><li>منها كرياتين: mg 3564</li></ul></li><li>تورين: mg 450</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/lemon.png" alt="Lemon">
+                        </div>
+                        <img src="./images/creatine_lemon_realdeal.jpg" alt="Creatine Lemon">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Creatine Monohydrate<br>Lemon</h3>
+                        <p class="product-brand">RealDeal</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Omega 3 WeSupps -->
+                <div class="product-card shop-item vitamins" data-title="Omega 3" data-price="30,000 دينار" data-description='<p><strong>عدد الحبات:</strong> 90 حبة</p><p><strong>حجم الحصة:</strong> 1 Capsule</p><ul><li>زيت السمك: mg 1000<ul><li>حمض إيكوسابنتاينويك (EPA): mg 180</li><li>حمض دوكوساهيكسانويك (DHA): mg 120</li></ul></li><li>فيتامين E (DL-alpha-tocopherol): mg 5.5</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/omega3_wesupps.jpg" alt="Omega 3">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Omega 3<br>90 Capsules</h3>
+                        <p class="product-brand">WeSupps</p>
+                        <span class="product-price">30,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Omega 3 RealDeal -->
+                <div class="product-card shop-item vitamins" data-title="Omega 3" data-price="50,000 دينار" data-description='<p><strong>عدد الحبات:</strong> 90 حبة</p><p><strong>حجم الحصة:</strong> 1 Capsule</p><ul><li>زيت السمك: mg 1000<ul><li>حمض إيكوسابنتاينويك (EPA): mg 180</li><li>حمض دوكوساهيكسانويك (DHA): mg 120</li></ul></li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/omega3_realdeal.jpg" alt="Omega 3 RealDeal">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Omega 3<br>90 Capsules</h3>
+                        <p class="product-brand">RealDeal</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Multi Vitamin WeSupps -->
+                <div class="product-card shop-item vitamins" data-title="Multi Vitamin" data-price="30,000 دينار" data-description='<p><strong>حجم الحصة:</strong> 1 Capsule</p><p><strong>عدد الحصص:</strong> 60</p><ul><li>فيتامين C: mg 150</li><li>حديد: mg 2.5</li><li>مغنيسيوم: mg 125</li><li>منغنيز: mg 2</li><li>كالسيوم: mg 75</li><li>نحاس: mg 0.3</li><li>بوتاسيوم: mg 50</li><li>فيتامين A: µg 550</li><li>فيتامين B3 (نياسين): mg 17.5</li><li>فيتامين B9 (حمض الفوليك): µg 100</li><li>فيتامين E: mg 15</li><li>سيلينيوم: µg 40</li><li>فيتامين B1 (ثيامين): mg 10</li><li>فيتامين B7 (بيوتين): µg 25</li><li>فيتامين B2 (ريبوفلافين): mg 10</li><li>فيتامين B12: µg 12.5</li><li>فيتامين B6: mg 10</li><li>فيتامين D3: µg 6</li><li>زنك: mg 10</li><li>كروميوم: µg 0.8</li><li>فيتامين B5 (حمض البانتوثنيك): mg 2.5</li><li>يوديد: µg 0.375</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/multivitamin_wesupps.jpg" alt="Multi Vitamin">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Multi Vitamin<br>60 Capsules</h3>
+                        <p class="product-brand">WeSupps</p>
+                        <span class="product-price">30,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Multi Vitamin RealDeal -->
+                <div class="product-card shop-item vitamins" data-title="Multi Vitamin" data-price="50,000 دينار" data-description='<p><strong>حجم الحصة:</strong> 2 Capsules</p><p><strong>عدد الحصص:</strong> 30</p><ul><li>فيتامين A: µg 1100</li><li>فيتامين C: mg 300</li><li>فيتامين D3: µg 12</li><li>فيتامين E: mg 30</li><li>فيتامين B1 (ثيامين): mg 20</li><li>فيتامين B2 (ريبوفلافين): mg 20</li><li>فيتامين B3 (نياسين): mg 35</li><li>فيتامين B5 (حمض البانتوثنيك): mg 5</li><li>فيتامين B6: mg 20</li><li>فيتامين B7 (بيوتين): µg 50</li><li>فيتامين B9 (حمض الفوليك): µg 200</li><li>فيتامين B12: µg 25</li><li>كالسيوم: mg 150</li><li>مغنيسيوم: mg 250</li><li>حديد: mg 5</li><li>زنك: mg 20</li><li>نحاس: mg 0.6</li><li>منغنيز: mg 4</li><li>سيلينيوم: µg 80</li><li>كروميوم: µg 1.6</li><li>يود: µg 0.75</li><li>بوتاسيوم: mg 100</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/multivitamin_realdeal.jpg" alt="Multi Vitamin RealDeal">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Multi Vitamin<br>60 Capsules</h3>
+                        <p class="product-brand">RealDeal</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Vitamins + Minerals Creator -->
+                <div class="product-card shop-item vitamins" data-title="Vitamins + Minerals" data-price="50,000 دينار" data-description='<p>لا توجد معلومات إضافية متاحة.</p>'>
+                    <div class="product-img-container">
+                        <img src="./images/vitamins_minerals_creator.jpg" alt="Vitamins Minerals Creator">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Vitamins + Minerals</h3>
+                        <p class="product-brand">Creator</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Turmeric + Ginger Elit Nutrition -->
+                <div class="product-card shop-item vitamins" data-title="Turmeric + Ginger" data-price="30,000 دينار" data-description='<p><strong>عدد الحبات:</strong> 30 حبة</p><p><strong>حجم الحصة:</strong> 1 Capsule</p><ul><li>كركم: mg 500</li><li>زنجبيل: mg 200</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/turmeric_elit.jpg" alt="Turmeric + Ginger">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Turmeric + Ginger<br>30 Capsules</h3>
+                        <p class="product-brand">Elit Nutrition</p>
+                        <span class="product-price">30,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Electrolyte Lemon BodyFuel -->
+                <div class="product-card shop-item vitamins" data-title="Electrolyte & Vitamin Mix Lemon" data-price="40,000 دينار" data-description='<p><strong>حجم الحصة:</strong> (1 scoop) g 7</p><ul><li>طاقة: kJ 41 / kcal 10</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 1.62<ul><li>منها سكريات: g 0.3</li></ul></li><li>بروتين: g 1</li><li>ملح: g 0.2</li><li>صوديوم: mg 127</li><li>بوتاسيوم: mg 341</li><li>كلوريد: mg 96</li><li>كالسيوم: mg 201</li><li>مغنيسيوم: mg 88</li><li>فيتامين C: mg 120</li><li>فيتامين B1: mg 1.1</li><li>فيتامين B2: mg 1.4</li><li>نياسين B3: mg 16</li><li>حمض البانتوثنيك B5: mg 6</li><li>فيتامين B6: mg 1.4</li><li>فيتامين B12: µg 2.5</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/lemon.png" alt="Lemon">
+                        </div>
+                        <img src="./images/electrolyte_lemon_bodyfuel.jpg" alt="Electrolyte Lemon">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Electrolyte Mix<br>Lemon</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Electrolyte Berry Blast BodyFuel -->
+                <div class="product-card shop-item vitamins" data-title="Electrolyte & Vitamin Mix Berry Blast" data-price="40,000 دينار" data-description='<p><strong>حجم الحصة:</strong> (1 scoop) g 7</p><ul><li>طاقة: kJ 41 / kcal 10</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 1.62<ul><li>منها سكريات: g 0.3</li></ul></li><li>بروتين: g 1</li><li>ملح: g 0.2</li><li>صوديوم: mg 127</li><li>بوتاسيوم: mg 341</li><li>كلوريد: mg 96</li><li>كالسيوم: mg 201</li><li>مغنيسيوم: mg 88</li><li>فيتامين C: mg 120</li><li>فيتامين B1: mg 1.1</li><li>فيتامين B2: mg 1.4</li><li>نياسين B3: mg 16</li><li>حمض البانتوثنيك B5: mg 6</li><li>فيتامين B6: mg 1.4</li><li>فيتامين B12: µg 2.5</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/berry.png" alt="Berry">
+                        </div>
+                        <img src="./images/electrolyte_berry_bodyfuel.jpg" alt="Electrolyte Berry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Electrolyte Mix<br>Berry Blast</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Electrolyte Blue Raspberry BodyFuel -->
+                <div class="product-card shop-item vitamins" data-title="Electrolyte & Vitamin Mix Blue Raspberry" data-price="40,000 دينار" data-description='<p><strong>حجم الحصة:</strong> (1 scoop) g 7</p><ul><li>طاقة: kJ 41 / kcal 10</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 1.62<ul><li>منها سكريات: g 0.3</li></ul></li><li>بروتين: g 1</li><li>ملح: g 0.2</li><li>صوديوم: mg 127</li><li>بوتاسيوم: mg 341</li><li>كلوريد: mg 96</li><li>كالسيوم: mg 201</li><li>مغنيسيوم: mg 88</li><li>فيتامين C: mg 120</li><li>فيتامين B1: mg 1.1</li><li>فيتامين B2: mg 1.4</li><li>نياسين B3: mg 16</li><li>حمض البانتوثنيك B5: mg 6</li><li>فيتامين B6: mg 1.4</li><li>فيتامين B12: µg 2.5</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/blueraspberry.png" alt="Blue Raspberry">
+                        </div>
+                        <img src="./images/electrolyte_blueraspberry_bodyfuel.jpg" alt="Electrolyte Blue Raspberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Electrolyte Mix<br>Blue Raspberry</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Electrolyte Orange Crush BodyFuel -->
+                <div class="product-card shop-item vitamins" data-title="Electrolyte & Vitamin Mix Orange Crush" data-price="40,000 دينار" data-description='<p><strong>حجم الحصة:</strong> (1 scoop) g 7</p><ul><li>طاقة: kJ 41 / kcal 10</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 1.62<ul><li>منها سكريات: g 0.3</li></ul></li><li>بروتين: g 1</li><li>ملح: g 0.2</li><li>صوديوم: mg 127</li><li>بوتاسيوم: mg 341</li><li>كلوريد: mg 96</li><li>كالسيوم: mg 201</li><li>مغنيسيوم: mg 88</li><li>فيتامين C: mg 120</li><li>فيتامين B1: mg 1.1</li><li>فيتامين B2: mg 1.4</li><li>نياسين B3: mg 16</li><li>حمض البانتوثنيك B5: mg 6</li><li>فيتامين B6: mg 1.4</li><li>فيتامين B12: µg 2.5</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/orange.png" alt="Orange">
+                        </div>
+                        <img src="./images/electrolyte_orange_bodyfuel.jpg" alt="Electrolyte Orange">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Electrolyte Mix<br>Orange Crush</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Ultimate Amino's Cola BodyFuel -->
+                <div class="product-card shop-item vitamins" data-title="Ultimate Amino's Cola" data-price="50,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 30</p><p><strong>حجم الحصة:</strong> (1 scoop) g 9</p><ul><li>طاقة: kJ 5 / kcal 1.2</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 0.3<ul><li>منها سكريات: g 0</li></ul></li><li>بروتين: g 0</li><li>ملح: g 0</li><li>فيتامين B6: mg 0.63</li><li>L-Leucine: g 2</li><li>L-Glutamine: g 1.25</li><li>سيترولين مالات (2:1): g 1.25</li><li>تورين: g 1.25</li><li>L-Isoleucine: g 1</li><li>L-Valine: g 1</li><li>كافيين: mg 100</li><li>كولين بيتارترات: mg 100</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/cola.png" alt="Cola">
+                        </div>
+                        <img src="./images/aminos_cola_bodyfuel.jpg" alt="Aminos Cola">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ultimate Amino's<br>Cola</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Ultimate Amino's Raspberry BodyFuel -->
+                <div class="product-card shop-item vitamins" data-title="Ultimate Amino's Raspberry" data-price="50,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 30</p><p><strong>حجم الحصة:</strong> (1 scoop) g 9</p><ul><li>طاقة: kJ 5 / kcal 1.2</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 0.3<ul><li>منها سكريات: g 0</li></ul></li><li>بروتين: g 0</li><li>ملح: g 0</li><li>فيتامين B6: mg 0.63</li><li>L-Leucine: g 2</li><li>L-Glutamine: g 1.25</li><li>سيترولين مالات (2:1): g 1.25</li><li>تورين: g 1.25</li><li>L-Isoleucine: g 1</li><li>L-Valine: g 1</li><li>كافيين: mg 100</li><li>كولين بيتارترات: mg 100</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/raspberry.png" alt="Raspberry">
+                        </div>
+                        <img src="./images/aminos_raspberry_bodyfuel.jpg" alt="Aminos Raspberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ultimate Amino's<br>Raspberry</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Ultimate Amino's Blue Raspberry BodyFuel -->
+                <div class="product-card shop-item vitamins" data-title="Ultimate Amino's Blue Raspberry" data-price="50,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 30</p><p><strong>حجم الحصة:</strong> (1 scoop) g 9</p><ul><li>طاقة: kJ 5 / kcal 1.2</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 0.3<ul><li>منها سكريات: g 0</li></ul></li><li>بروتين: g 0</li><li>ملح: g 0</li><li>فيتامين B6: mg 0.63</li><li>L-Leucine: g 2</li><li>L-Glutamine: g 1.25</li><li>سيترولين مالات (2:1): g 1.25</li><li>تورين: g 1.25</li><li>L-Isoleucine: g 1</li><li>L-Valine: g 1</li><li>كافيين: mg 100</li><li>كولين بيتارترات: mg 100</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/blueraspberry.png" alt="Blue Raspberry">
+                        </div>
+                        <img src="./images/aminos_blueraspberry_bodyfuel.jpg" alt="Aminos Blue Raspberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ultimate Amino's<br>Blue Raspberry</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">50,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Pre-Workout Strawberry Lemonade BodyFuel -->
+                <div class="product-card shop-item preworkout" data-title="Pre-Workout Ultimate Strawberry Lemonade" data-price="40,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 40</p><p><strong>حجم الحصة:</strong> (1 scoop) g 8</p><ul><li>طاقة: kJ 4.2 / kcal 1</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 0.29<ul><li>منها سكريات: g 0</li></ul></li><li>بروتين: g 0</li><li>ملح: g 0.12</li><li>نياسين: mg 30</li><li>فيتامين B12: µg 100</li><li>كرياتين مونوهيدرات: g 2</li><li>بيتا ألانين: g 1.5</li><li>سيترولين مالات (2:1): g 1</li><li>أرجينين ألفا كيتوجلوتارات (AAKG): mg 500</li><li>BCAA 2:1:1: mg 500<ul><li>ليوسين: mg 250</li><li>إيزوليوسين: mg 125</li><li>فالين: mg 125</li></ul></li><li>تورين: mg 500</li><li>كافيين لامائي: mg 250</li><li>كولين بيتارترات: mg 250</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/strawberry.png" alt="Strawberry">
+                        </div>
+                        <img src="./images/prework_strawlemon_bodyfuel.jpg" alt="Pre-Workout Strawberry Lemonade">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pre-Workout Ultimate<br>Strawberry Lemonade</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Pre-Workout Frozen Popsicle BodyFuel -->
+                <div class="product-card shop-item preworkout" data-title="Pre-Workout Ultimate Frozen Popsicle" data-price="40,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 40</p><p><strong>حجم الحصة:</strong> (1 scoop) g 8</p><ul><li>طاقة: kJ 4.2 / kcal 1</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 0.29<ul><li>منها سكريات: g 0</li></ul></li><li>بروتين: g 0</li><li>ملح: g 0.12</li><li>نياسين: mg 30</li><li>فيتامين B12: µg 100</li><li>كرياتين مونوهيدرات: g 2</li><li>بيتا ألانين: g 1.5</li><li>سيترولين مالات (2:1): g 1</li><li>أرجينين ألفا كيتوجلوتارات (AAKG): mg 500</li><li>BCAA 2:1:1: mg 500<ul><li>ليوسين: mg 250</li><li>إيزوليوسين: mg 125</li><li>فالين: mg 125</li></ul></li><li>تورين: mg 500</li><li>كافيين لامائي: mg 250</li><li>كولين بيتارترات: mg 250</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/popsicle.png" alt="Popsicle">
+                        </div>
+                        <img src="./images/prework_popsicle_bodyfuel.jpg" alt="Pre-Workout Frozen Popsicle">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pre-Workout Ultimate<br>Frozen Popsicle</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <!-- Pre-Workout Blue Raspberry BodyFuel -->
+                <div class="product-card shop-item preworkout" data-title="Pre-Workout Ultimate Blue Raspberry" data-price="40,000 دينار" data-description='<p><strong>عدد السكوبات:</strong> 40</p><p><strong>حجم الحصة:</strong> (1 scoop) g 8</p><ul><li>طاقة: kJ 4.2 / kcal 1</li><li>دهون: g 0<ul><li>منها مشبعة: g 0</li></ul></li><li>كاربوهيدرات: g 0.29<ul><li>منها سكريات: g 0</li></ul></li><li>بروتين: g 0</li><li>ملح: g 0.12</li><li>نياسين: mg 30</li><li>فيتامين B12: µg 100</li><li>كرياتين مونوهيدرات: g 2</li><li>بيتا ألانين: g 1.5</li><li>سيترولين مالات (2:1): g 1</li><li>أرجينين ألفا كيتوجلوتارات (AAKG): mg 500</li><li>BCAA 2:1:1: mg 500<ul><li>ليوسين: mg 250</li><li>إيزوليوسين: mg 125</li><li>فالين: mg 125</li></ul></li><li>تورين: mg 500</li><li>كافيين لامائي: mg 250</li><li>كولين بيتارترات: mg 250</li></ul>'>
+                    <div class="product-img-container">
+                        <div class="flavor-icon">
+                            <img src="./icons/blueraspberry.png" alt="Blue Raspberry">
+                        </div>
+                        <img src="./images/prework_blueraspberry_bodyfuel.jpg" alt="Pre-Workout Blue Raspberry">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pre-Workout Ultimate<br>Blue Raspberry</h3>
+                        <p class="product-brand">BodyFuel</p>
+                        <span class="product-price">40,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="./icons/logo-icon.png" alt="Logo Icon" style="width:50px; margin:0 auto; opacity:0.7;">
+                <h3>Sumer Nutrition</h3>
+            </div>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#shop">Products</a>
+                <a href="https://www.instagram.com/sumernutrition" target="_blank">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2025 Sumer Nutrition. Nasiriyah, Iraq.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const detailsPanel = document.getElementById('detailsPanel');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            if(!detailsPanel.classList.contains('open')) {
+                overlay.classList.toggle('active');
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        
+        overlay.addEventListener('click', () => {
+            if(navLinks.classList.contains('active')) toggleMenu();
+            if(detailsPanel.classList.contains('open')) closePanel();
+        });
+
+        function filterSelection(category) {
+            const items = document.getElementsByClassName("shop-item");
+            const btns = document.getElementsByClassName("filter-btn");
+
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+                if (btns[i].getAttribute('onclick').includes(category)) {
+                    btns[i].classList.add("active");
+                }
+            }
+
+            for (let i = 0; i < items.length; i++) {
+                if (category === "all") {
+                    items[i].classList.remove("hide");
+                } else {
+                    if (items[i].classList.contains(category)) {
+                        items[i].classList.remove("hide");
+                    } else {
+                        items[i].classList.add("hide");
+                    }
+                }
+            }
+        }
+
+        function openDetails(element) {
+            const card = element.closest('.product-card');
+            
+            const title = card.getAttribute('data-title') || 'Product';
+            const price = card.getAttribute('data-price') || '';
+            const description = card.getAttribute('data-description') || '<p>لا توجد معلومات متاحة.</p>';
+
+            document.getElementById('panelTitle').innerText = title;
+            document.getElementById('panelPrice').innerText = price;
+            document.getElementById('panelDesc').innerHTML = description;
+            
+            detailsPanel.classList.add('open');
+            overlay.classList.add('active');
+        }
+
+        function closePanel() {
+            detailsPanel.classList.remove('open');
+            if(!navLinks.classList.contains('active')) {
+                overlay.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

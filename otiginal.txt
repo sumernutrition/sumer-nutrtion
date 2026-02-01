@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumer Nutrition | Ancient Power</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Harmattan:wght@400;500;600;700&family=Lalezar&family=Noto+Sans+Arabic:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+       
+        /* --- RESET & VARIABLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        
+        
+        :root {
+            /* NEW COLOR SCHEME */
+            --bg-main: #EEECE8;       /* Light Stone Background */
+            --bg-card: #F7F5F2;       /* Slightly lighter for cards */
+            --accent: #52361D;        /* Dark Brown (Text, Borders, Logos) */
+            --secondary: #28292B;     /* Dark Grey (Footer, Secondary elements) */
+            
+            --nav-height: 80px;
+            --font-head: 'Cinzel', 'Baloo Bhaijaan 2', serif; 
+            --font-body: 'Montserrat', 'Harmattan', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-image: url("./images/hero-bg-light.jpg"); /* Entire web now uses this */
+            background-attachment: fixed; /* Optional: keeps the texture still while you scroll */
+            background-size: 30em;
+            background-repeat: repeat;
+            color: var(--secondary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            padding-top: var(--nav-height);
+            direction: rtl;
+            unicode-bidi: plaintext;
+        }
+
+        /* --- TYPOGRAPHY & UTILS --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-head);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--accent);
+        }
+
+        /* Centered Decoration Line */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .section-desc {
+            text-align: center;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 2px solid var(--accent);
+            font-size: 0.9rem;
+        }
+
+        /* Primary Button (Filled) */
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-main);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        /* Outline Button */
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            width: 100%;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(82, 54, 29, 0.1);
+        }
+
+        /* Small Text Link for Details */
+        .btn-details {
+            display: block;
+            margin-top: 10px;
+            color: var(--accent);
+            text-decoration: underline;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+            background: none;
+            border: none;
+            width: 100%;
+        }
+
+        /* --- IMAGES --- */
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            
+        }
+        
+        .icon-img {
+            width: 40px; 
+            height: 40px; 
+            object-fit: contain;
+            /* Filter to turn black icons into brown/accent color if needed, 
+               but best to just use PNGs of the right color */
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(238, 236, 232, 0.95); /* Light semi-transparent */
+            border-bottom: 2px solid var(--accent);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover { opacity: 0.7; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--accent);
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--bg-main);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+                border-left: 2px solid var(--accent);
+                z-index: 1001;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { right: 0; }
+
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(40, 41, 43, 0.6);
+            z-index: 1000;
+            display: none;
+        }
+        .overlay.active { display: block; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-wrapper {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .hero-bg-wrapper img {
+            width: 100%; height: 100%; object-fit: cover; 
+            opacity: 0.15; /* Subtle background pattern */
+            /* In bright mode, we want a subtle texture, not a dark image */
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* --- BENEFITS --- */
+        .benefits {
+            background: transparent; /* Changed from var(--bg-card) */
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(82, 54, 29, 0.1);
+            border-bottom: 1px solid rgba(82, 54, 29, 0.1);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .benefit-item h4 { margin-bottom: 10px; font-size: 1.1rem; }
+        .benefit-item p { font-size: 0.9rem; color: #555; }
+        .benefit-icon-wrapper { margin-bottom: 15px; }
+
+        /* --- FEATURED SECTION (Best Sellers) --- */
+        .featured {
+            padding: 80px 0;
+            background: transparent; /* Ensure this is transparent too */
+        }
+
+        .featured-grid {
+            /* keep featured layout as-is */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        /* Product Card Styling */
+        .product-card {
+             background: #FFF;
+             border: 1px solid #E0E0E0;
+             transition: 0.3s;
+             position: relative;
+             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            /* shrink-to-fit card: width will scale but keep a sensible max */
+            width: 100%;
+            max-width: 320px; /* preferred card width */
+            display: flex;
+            flex-direction: column;
+            overflow: visible; /* allow content to expand if necessary */
+        }
+ 
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(82, 54, 29, 0.1);
+        }
+ 
+        .product-img-container {
+            /* true square area that scales with card width */
+            width: 100%;
+            aspect-ratio: 1 / 1; /* keeps it square while allowing shrink */
+            overflow: hidden;
+            background: #F4F4F4; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+         
+         .product-img-container img {
+             /* Fill the fixed square area without distortion */
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             display: block;
+         }
+ 
+         .product-info { 
+             padding: 20px;
+             text-align: center;
+             /* keep the info area fixed within the remaining card height */
+             flex: 1 1 auto;
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+         }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+ 
+        .product-price {
+             color: #886A4A; /* Lighter brown for price */
+             font-weight: 700;
+             font-size: 1.1rem;
+             margin-bottom: 10px;
+             display: block;
+ 
+             /* Added: render price right-to-left and align to the right */
+             direction: rtl;
+         }
+ 
+         .product-card[data-price] .product-price,
+         .panel-price,
+         #panelPrice {
+             direction: rtl;
+         }
+ 
+        /* Fix button clipping & padding: consistent sizing and no overflow */
+        .product-info .btn {
+            box-sizing: border-box;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 10px;
+            line-height: 1.1;
+            white-space: normal; /* allow wrapped text for long translations */
+        }
+        /* inline width:100% remains safe */
+        .product-info .btn[style] { width: 100%; }
+ 
+        .badge {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: var(--accent);
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- SHOP / FILTER SECTION --- */
+        .shop-section {
+            padding: 80px 0;
+            background: transparent; /* Changed from var(--bg-card) */
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #CCC;
+            color: #777;
+            padding: 10px 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: var(--font-body);
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #FFF;
+        }
+
+        /* --- THE 2-COLUMN LAYOUT (shrink-to-fit) ---
+           Always two columns, but columns shrink to fit viewport.
+           Cards use max-width so they won't exceed the intended size. */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(160px, 1fr)); /* two columns that can shrink */
+            gap: 30px;
+            justify-items: center; /* center card within each grid cell */
+            padding-bottom: 10px;
+        }
+ 
+        /* Slightly reduce gaps on very small screens */
+        @media (max-width: 420px) {
+            .shop-grid { gap: 18px; }
+        }
+ 
+         .shop-item { display: block; }
+         .shop-item.hide { display: none; }
+ 
+        /* --- FOOTER --- */
+        footer {
+            background: var(--secondary);
+            color: #CCC;
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo h3 { color: #FFF; margin-top: 10px; }
+
+        .footer-links { margin: 25px 0; }
+        .footer-links a { color: #999; margin: 0 15px; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: #FFF; }
+        
+        .copyright { color: #555; font-size: 0.8rem; border-top: 1px solid #333; padding-top: 20px; margin-top: 40px;}
+
+        /* --- SLIDE-OUT DETAILS PANEL --- */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -500px; /* Hidden by default */
+            width: 400px;
+            height: 100vh;
+            background: #FFF;
+            z-index: 2000;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 40px;
+            overflow-y: auto;
+            border-left: 5px solid var(--accent);
+            unicode-bidi: plaintext;
+        }
+
+        .side-panel.open { right: 0; }
+        
+        .panel-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--accent);
+        }
+
+        .panel-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            unicode-bidi: plaintext;
+        }
+
+        .panel-content .panel-price {
+            color: #886A4A;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .panel-content p {
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        /* Divider in panel */
+        .panel-divider {
+            height: 1px;
+            background: #E0E0E0;
+            margin: 30px 0;
+        }
+
+        /* Mobile Panel width */
+        @media (max-width: 500px) {
+            .side-panel { width: 85%; }
+        }
+
+        #hero > div > a {
+            font-size: 1.7rem;
+            padding: 2px 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="side-panel" id="detailsPanel">
+        <div class="panel-close" onclick="closePanel()"><i class="fa-solid fa-xmark"></i> &times;</div>
+        <div class="panel-content" id="panelContent">
+            <h3 id="panelTitle">Product Name</h3>
+            <span class="panel-price" id="panelPrice">$0.00</span>
+            <div class="panel-divider"></div>
+            <h4>المعلومات الغذائية</h4>
+
+            <!-- dynamic description container (will be filled from data-description) -->
+            <div id="panelDesc">
+                <p><strong>Serving Size:</strong> 1 Scoop (30g)</p>
+                <p>No additional details available.</p>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%; margin-top:20px;">Add to Cart</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div style="width: 30px;">
+                    <img src="./icons/logo-icon.png" alt="Sumer Logo" class="icon-img"> 
+                </div>
+                SUMER NUTRITION
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="#shop">The Armory</a></li>
+                <li><a href="#benefits">Why Us</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <h1>قوة سومر.<br>من مكملات سومر.</h1>
+            <p>منذ 5000 سنة، تبقى حضارة سومر قوية. ومع كل جرعة، راح تجرب قوة سومر.</p>
+            <a href="#shop" class="btn btn-primary">منتجاتنا</a>
+        </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon-wrapper">
+                        <img src="./icons/muscle.png" alt="Strength Icon" class="icon-img">
+                    </div>
+                    <h4>Raw Strength</h4>
+                    <p>Potent formulas for max output.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon-wrapper">
+                        <img src="./icons/science.png" alt="Science Icon" class="icon-img">
+                    </div>
+                    <h4>Modern Science</h4>
+                    <p>Lab-tested for purity & safety.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon-wrapper">
+                        <img src="./icons/history.png" alt="History Icon" class="icon-img">
+                    </div>
+                    <h4>Ancient Wisdom</h4>
+                    <p>Inspired by the first empire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured" id="featured">
+        <div class="container">
+            <h2 class="section-title">Empire Favorites</h2>
+            <p class="section-desc">Our most powerful blends, chosen by the elite.</p>
+
+            <div class="featured-grid">
+                <div class="product-card" data-title="Prime whey" data-price="100,000 دينار" data-description='<p><strong>لكل سكوب واحد:</strong> Scoop (30g)</p><ul><li>بروتين: 22.21 g &rlm;</li><li>طاقة: 469 kj &rlm; / 112 kcal</li><li>دهون: 1.72 g &rlm;<ul>منها مشبعة: 1.01 g &rlm;</ul></li><li>كاربوهيدرات: 1.93 g &rlm;</li><ul>منها سكريات: 1.84 g &rlm;</ul><li>ملح: 0.21 g &rlm;</li></ul>'>
+                    <span class="badge">Best Seller</span>
+                    <div class="product-img-container">
+                        <img src="./images/product-whey-gold.png" alt="Whey Protein Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Prime whey 2KG</h3>
+                        <span class="product-price">70,000 دينار</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-title="Gilgamesh Fury" data-price="$39.99" data-description='<p><strong>Serving Size:</strong> 1 Scoop (12g)</p><ul><li>Caffeine: 200mg</li><li>Beta-Alanine: 2g</li><li>Focus Blend</li></ul>'>
+                    <span class="badge">Top Rated</span>
+                    <div class="product-img-container">
+                        <img src="./images/product-pre-red.png" alt="Pre-Workout Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gilgamesh Fury</h3>
+                        <span class="product-price">$39.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                 <div class="product-card" data-title="Tablet Creatine" data-price="$29.99" data-description='<p><strong>Serving Size:</strong> 1 Tablet</p><ul><li>Creatine Monohydrate: 5g</li><li>No fillers</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/product-creatine.png" alt="Creatine Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Tablet Creatine</h3>
+                        <span class="product-price">$29.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shop-section" id="shop">
+        <div class="container">
+            <h2 class="section-title">The Armory</h2>
+            <p class="section-desc">Select your weapon. Filter by category below.</p>
+
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterSelection('all')">All</button>
+                <button class="filter-btn" onclick="filterSelection('protein')">Proteins</button>
+                <button class="filter-btn" onclick="filterSelection('preworkout')">Pre-Workout</button>
+                <button class="filter-btn" onclick="filterSelection('essentials')">Vitamins</button>
+            </div>
+
+            <div class="shop-grid">
+                
+                <div class="product-card shop-item protein" data-title="Ziggurat Whey (Choco)" data-price="$54.99" data-description='<p><strong>Serving Size:</strong> 1 Scoop (30g)</p><ul><li>Protein: 24g</li><li>Fat: 2g</li><li>Sugars: 1g</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/product-whey-choc.png" alt="Chocolate Whey Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ziggurat Whey (Choco)</h3>
+                        <span class="product-price">$54.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <div class="product-card shop-item preworkout" data-title="Gilgamesh Fury (Blue)" data-price="$39.99" data-description='<p><strong>Serving Size:</strong> 1 Scoop (12g)</p><ul><li>Caffeine: 180mg</li><li>Creatine: 1.5g</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/product-pre-blue.png" alt="Blue Pre-Workout Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gilgamesh Fury (Blue)</h3>
+                        <span class="product-price">$39.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <div class="product-card shop-item essentials" data-title="Sumerian Omega" data-price="$19.99" data-description='<p><strong>Serving Size:</strong> 1 Softgel</p><ul><li>Omega-3 (EPA/DHA): 1000mg</li><li>Supports heart & brain</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/product-omega.png" alt="Omega 3 Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sumerian Omega</h3>
+                        <span class="product-price">$19.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <div class="product-card shop-item protein" data-title="Euphrates Vegan" data-price="$49.99" data-description='<p><strong>Serving Size:</strong> 1 Scoop (35g)</p><ul><li>Vegan Protein Blend: 20g</li><li>Natural Flavors</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/product-vegan.png" alt="Vegan Protein Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Euphrates Vegan</h3>
+                        <span class="product-price">$49.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <div class="product-card shop-item essentials" data-title="Daily Tablet" data-price="$24.99" data-description='<p><strong>Serving Size:</strong> 1 Tablet</p><ul><li>Vitamins & Minerals</li><li>Supports daily health</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/product-multi.png" alt="Multivitamin Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Daily Tablet</h3>
+                        <span class="product-price">$24.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+                <div class="product-card shop-item preworkout" data-title="Night Pump" data-price="$34.99" data-description='<p><strong>Serving Size:</strong> 1 Scoop (12g)</p><ul><li>NO Booster</li><li>Arginine: 3g</li></ul>'>
+                    <div class="product-img-container">
+                        <img src="./images/product-pump.png" alt="Pump Pre-Workout Image">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Night Pump</h3>
+                        <span class="product-price">$34.99</span>
+                        <button class="btn btn-primary" style="width:100%" onclick="openDetails(this)">المعلومات الغذائية</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="./icons/logo-icon.png" alt="Logo Icon" style="width:50px; margin:0 auto; opacity:0.7;">
+                <h3>Sumer Nutrition</h3>
+            </div>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#shop">Products</a>
+                <a href="#benefits">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2024 Sumer Nutrition. Nasiriyah, Iraq.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* --- 1. MOBILE MENU --- */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const overlay = document.getElementById('overlay');
+        const detailsPanel = document.getElementById('detailsPanel');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Only toggle overlay if panel isn't open
+            if(!detailsPanel.classList.contains('open')) {
+                overlay.classList.toggle('active');
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        
+        // Universal Overlay Click (Closes Menu AND Side Panel)
+        overlay.addEventListener('click', () => {
+            // Close Nav
+            if(navLinks.classList.contains('active')) toggleMenu();
+            // Close Panel
+            if(detailsPanel.classList.contains('open')) closePanel();
+        });
+
+        // --- 2. FILTERING ---
+        function filterSelection(category) {
+            const items = document.getElementsByClassName("shop-item");
+            const btns = document.getElementsByClassName("filter-btn");
+
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+                if (btns[i].getAttribute('onclick').includes(category)) {
+                    btns[i].classList.add("active");
+                }
+            }
+
+            for (let i = 0; i < items.length; i++) {
+                if (category === "all") {
+                    items[i].classList.remove("hide");
+                } else {
+                    if (items[i].classList.contains(category)) {
+                        items[i].classList.remove("hide");
+                    } else {
+                        items[i].classList.add("hide");
+                    }
+                }
+            }
+        }
+
+        // --- 3. DETAILS SLIDER (SIDE PANEL) ---
+        
+        // Function to open panel and populate data
+        function openDetails(element) {
+            // Find the parent card of the clicked button
+            const card = element.closest('.product-card');
+            
+            // Get data from the card (Name, Price, Description)
+            const title = card.getAttribute('data-title') || 'Product';
+            const price = card.getAttribute('data-price') || '';
+            const description = card.getAttribute('data-description') || '<p>No details available.</p>';
+
+            // Update Panel content
+            document.getElementById('panelTitle').innerText = title;
+            document.getElementById('panelPrice').innerText = price;
+            document.getElementById('panelDesc').innerHTML = description;
+            
+            // Open Panel & Overlay
+            detailsPanel.classList.add('open');
+            overlay.classList.add('active');
+        }
+
+        function closePanel() {
+            detailsPanel.classList.remove('open');
+            // Only remove overlay if nav is also closed
+            if(!navLinks.classList.contains('active')) {
+                overlay.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
